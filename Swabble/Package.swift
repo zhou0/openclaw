@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "swabble",
     platforms: [
-        .macOS(.v15),
+        .macOS(.v10_15),
         .iOS(.v17),
     ],
     products: [
