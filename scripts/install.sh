@@ -1952,7 +1952,8 @@ can_resolve_registry_package_version() {
     if [[ -z "$value" ]]; then
         return 0
     fi
-    if [[ "${value,,}" == "main" ]]; then
+    local lower_value=$(echo "$value" | tr '[:upper:]' '[:lower:]')
+    if [[ "$lower_value" == "main" ]]; then
         return 1
     fi
     if is_explicit_package_install_spec "$value"; then
@@ -1964,7 +1965,8 @@ can_resolve_registry_package_version() {
 resolve_package_install_spec() {
     local package_name="$1"
     local value="$2"
-    if [[ "${value,,}" == "main" ]]; then
+    local lower_value=$(echo "$value" | tr '[:upper:]' '[:lower:]')
+    if [[ "$lower_value" == "main" ]]; then
         echo "github:openclaw/openclaw#main"
         return 0
     fi
